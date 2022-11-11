@@ -1,0 +1,33 @@
+version: "3.9"
+
+services:
+  node:
+    image: node:14.21.0-alpine3.16
+    ports:
+      - 8501:8000
+    volumes:
+      - ./:/app
+    working_dir: /app
+    command: tail -f /etc/hostname
+    depends_on:
+      - mysql_db
+      - adminer_container
+  
+  mysql_db:
+    image: mysql:latest
+    ports:
+      - 8507:3307
+    volumes:
+      - ./mysql/mysql_db_data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      TZ: 'Europe/Paris'
+
+            
+  adminer_container:
+    image: adminer:latest
+    environment: 
+      ADMINER_DEFAULT_SERVER: mysql_db
+      ADMINER_DESIGN: galkaev
+    ports: 
+      - 8580:8080

@@ -1,0 +1,43 @@
+version: "3.9"
+
+services:
+  node:
+    image: node:14.21.0-alpine3.16
+    ports:
+      - 8501:8010
+    volumes:
+      - ./:/app
+    working_dir: /app
+    command: tail -f /etc/hostname
+    environment:
+      - WT_PROFILE_ID
+      - AWS_SECURITY_TOKEN
+      - HOSTTYPE
+      - AWS_SESSION_TOKEN
+      - AWS_VAULT
+      - AWS_ACCESS_KEY_ID
+      - AWS_VAULT_BACKEND
+      - AWS_SESSION_EXPIRATION
+      - AWS_DEFAULT_REGION
+      - WT_SESSION
+    depends_on:
+      - mysql_db
+      - adminer_container
+
+  mysql_db:
+    image: mysql:latest
+    ports:
+      - 8507:3307
+    volumes:
+      - ./mysql/mysql_db_data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      TZ: "Europe/Paris"
+
+  adminer_container:
+    image: adminer:latest
+    environment:
+      ADMINER_DEFAULT_SERVER: mysql_db
+      ADMINER_DESIGN: galkaev
+    ports:
+      - 8580:8080
