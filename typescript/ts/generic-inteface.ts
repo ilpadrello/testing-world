@@ -24,5 +24,5 @@ interface Products{
 let result = fetch<Products>("url");
 let result2 = fetch<User>("url");
  
-result.data.name
-result2.data.username
+//result.data.name
+//result2.data.username

@@ -7,5 +7,5 @@ function fetch(url) {
 }
 let result = fetch("url");
 let result2 = fetch("url");
-result.data.name;
-result2.data.username;
+//result.data.name
+//result2.data.username
