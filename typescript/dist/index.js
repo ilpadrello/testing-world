@@ -91,3 +91,51 @@ let ride2 = new Ride();
 ride1.start();
 ride2.start();
 console.log(Ride.activeRides);
+//Class inheritance
+class Person {
+    constructor(name, surname, email) {
+        this.name = name;
+        this.surname = surname;
+        this.email = email;
+    }
+    get fullName() {
+        return this.surname + ' ' + this.name;
+    }
+}
+class Teacher extends Person {
+    constructor(Id, name, surname, email) {
+        super(name, surname, email);
+        this.Id = Id;
+    }
+    get fullName() {
+        return 'Professor ' + super.fullName;
+    }
+}
+//Abstract class and methods
+class Shape {
+    constructor(nLines) {
+        this.nLines = nLines;
+    }
+    getNLines() {
+        return this.nLines;
+    }
+}
+class Square extends Shape {
+    constructor(nLines) {
+        super(nLines);
+    }
+    render() {
+        console.log("[]");
+    }
+}
+class thought {
+    constructor(name) {
+        this.name = name;
+    }
+    getIdea(idea) {
+        this.idea = idea;
+    }
+    evalueIdea() {
+        console.log("Eh.... so so");
+    }
+}
