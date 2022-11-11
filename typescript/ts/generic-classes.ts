@@ -16,3 +16,9 @@ class KeyToValueTwo<TKey, Tvalue>{
 }
 
 let pair2 = new KeyToValueTwo<number,string>(1,"ciao");
+//more than one  placeholder and no declaration of type, compiler wil get that automatically via the parameter
+class KeyToValue3<TKey, Tvalue>{
+    constructor(public key:TKey, value:Tvalue){}
+}
+
+let pair3 = new KeyToValueTwo(1,"ciao");

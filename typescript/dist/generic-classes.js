@@ -17,3 +17,10 @@ class KeyToValueTwo {
     }
 }
 let pair2 = new KeyToValueTwo(1, "ciao");
+//more than one  placeholder and no declaration of type, compiler wil get that automatically via the parameter
+class KeyToValue3 {
+    constructor(key, value) {
+        this.key = key;
+    }
+}
+let pair3 = new KeyToValueTwo(1, "ciao");
